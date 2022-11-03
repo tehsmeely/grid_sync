@@ -1,10 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
-[sub_resource type="SpatialMaterial" id=1]
+[sub_resource type="SpatialMaterial" id=10]
 albedo_color = Color( 0.65098, 0.0117647, 0.0117647, 0.254902 )
 
 [sub_resource type="CubeMesh" id=2]
-material = SubResource( 1 )
+material = SubResource( 10 )
+size = Vector3( 1, 0.2, 1 )
+
+[sub_resource type="SpatialMaterial" id=14]
+albedo_color = Color( 0.282353, 0.282353, 0.866667, 1 )
+
+[sub_resource type="CubeMesh" id=5]
+material = SubResource( 14 )
 size = Vector3( 1, 0.2, 1 )
 
 [sub_resource type="PrismMesh" id=3]
@@ -12,9 +19,11 @@ size = Vector3( 1.5, 2, 1.5 )
 
 [node name="OverlayMeshLibrary" type="Spatial"]
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
-visible = false
+[node name="RedMarker" type="MeshInstance" parent="."]
 mesh = SubResource( 2 )
 
-[node name="MeshInstance2" type="MeshInstance" parent="."]
+[node name="BlueMarker" type="MeshInstance" parent="."]
+mesh = SubResource( 5 )
+
+[node name="Prism" type="MeshInstance" parent="."]
 mesh = SubResource( 3 )
