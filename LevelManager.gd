@@ -41,6 +41,9 @@ func _process(_delta):
 			if c.has_method("draw_moves"):
 				c.draw_moves()
 
+	if Input.is_action_just_pressed("dbg_execute"):
+		self.execute()
+
 
 func get_unit_by_name(name):
 	for unit in units.get_children():
@@ -69,3 +72,7 @@ func spawn_unit():
 	last_tile_pos[0] = last_tile_pos[0] + x_per_step
 	last_tile_pos[1] = last_tile_pos[1] + y_per_step
 	last_name += 1
+
+func execute():
+	for unit in units.get_children():
+		unit.execute_queued()

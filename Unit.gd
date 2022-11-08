@@ -109,6 +109,13 @@ func queue_action(action_name):
 		_:
 			print("Unknown unit action: ", action_name)
 
+func execute_queued():
+	if self.queued_action != null:
+		self.tile_pos_x = self.queued_action["points"][-1][0]
+		self.tile_pos_y = self.queued_action["points"][-1][1]
+		self.orientation = _turn_orientation(self.orientation, self.queued_action["turn"])
+		self._update_translation()
+		self.clear_queued_action()
 
 func set_tile_pos(x, y):
 	tile_pos_x = x
